@@ -86,7 +86,7 @@ by the end of day after each lecture.
 There will be homework assignments most weeks. You must turn in the work on
 Canvas by the specified due time.
 
-All work **must be typed**. You are not required to use \LaTeX.
+All work **must be typed**. You are not required to use $\LaTeX$.
 
 Expectations for assignments:
 
