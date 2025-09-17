@@ -154,7 +154,6 @@ Your grades will be determined by the following distribution:
 
 | If you get at least | Your grade is at least |
 | ------------------- | ---------------------- |
-
 | 97% | A+ (recorded as A by the University, but ask and I will give you a sticker) |
 | 93% | A |
 | 90% | A- |
