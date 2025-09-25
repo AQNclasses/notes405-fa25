@@ -9,9 +9,8 @@ paragraph answers on quizzes in response to assigned readings. We will also work
 outline construction such as you would use for longer written pieces. Be sure to bring something to write
 with (or a laptop) to class.
 
-
 We will have a quiz this Friday on the syllabus as well as this week's assigned
-reading, will also check in about your experience in 305 (ungraded "pre-quiz").
+reading, will also check in about your goals for the quarter.
 
 Icebreaker: 2 truths and 1 lie
 
@@ -40,7 +39,13 @@ We can analyze algorithms from multiple lenses:
 3. analysis of evidence
 4. conclusion
 
+## Computational model review
+
+## Intro to Greedy / Dynamic Programming: Rod cut problem
+
+- see worksheet
+
+## Writing: Structuring an argument
+
 - What is a syllogism?
 - What is dialectic?
-
-## Computational model review
