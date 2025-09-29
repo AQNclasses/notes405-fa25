@@ -43,14 +43,14 @@ To find revenue $r_n$, we search exhaustively over all possible options, finding
 Written another way:
 
 $$
-r_n = \max \{ p_n, r_1 + r_{n-1}, \ldots, r_{n-1} + r_1 \}
+r_n = \max `\{ p_n, r_1 + r_{n-1}, \ldots, r_{n-1} + r_1 `\}
 $$
 
 In functional notation:
 
 $$
-RodCut(n) = \max \{ p_n, RodCut(1) + RodCut(n-1), \ldots, RodCut(n-1) +
-RodCut(1) \}
+RodCut(n) = \max `\{ p_n, RodCut(1) + RodCut(n-1), \ldots, RodCut(n-1) +
+RodCut(1) `\}
 $$
 
 Observations?
@@ -67,7 +67,7 @@ all lengths of rod to sell in the first step.
 Can reformulate as:
 
 $$
-r_n = \max \{ p_i + r_{n-i} : 1 \leq i \leq n \}
+r_n = \max `\{ p_i + r_{n-i} : 1 \leq i \leq n `\}
 $$
 
 Still: many sub-problems, repeated. How to analyze performance?
