@@ -1,6 +1,5 @@
 # Dynamic Programming
 
-
 ## Induction Review
 
 Steps in inductive proof:
@@ -74,3 +73,9 @@ Still: many sub-problems, repeated. How to analyze performance?
 
 We write down a **recurrence** that summarizes the performance of the
 **recursive algorithm.**
+
+# Top-down vs. Bottom-up
+
+- See worksheet (Rod Cut 2)
+- What is top-down?
+- What is bottom-up?
