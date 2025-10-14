@@ -30,7 +30,7 @@ Average-case running time is defined by the expected value over all inputs:
 
 
 $$
-T_{avg}(n) = \E_{|X| = n} \[T(X)\] = \sum T(X) Pr(X)
+T_{avg}(n) = E_{|X| = n} \[T(X)\] = \sum_{|X| = n} T(X) Pr(X)
 $$
 
 What is the hardest part of computing this sum?
@@ -44,7 +44,7 @@ randomized algorithm is no longer fixed, but itself a random variable.
 We can then consider the worst-case expected running time.
 
 $$
-T_{worst-expected}(n) = \max_{|X| = n} \E \[T(X)\]
+T_{worst-expected}(n) = \max_{|X| = n} E \[T(X)\]
 $$
 
 ## Back to nuts and bolts
@@ -65,5 +65,8 @@ comparisons.
 How would we write down the probability of exactly $k$ comparisons?
 
 \begin{equation}
-Pr[T(n) = k] = \cases{1/n \text{if k < n-1}}{2/n \text{if k=n-1}}
+Pr[T(n) = k] = \begin{cases}
+1/n & \text{if k < n-1} \\
+2/n & \text{if k=n-1}
+\end{cases}
 \end{equation}
