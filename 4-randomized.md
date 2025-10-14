@@ -70,3 +70,50 @@ Pr[T(n) = k] = \begin{cases}
 2/n & \text{if k=n-1}
 \end{cases}
 $$
+
+Why two cases? If $k=n-1$, there are two nuts left to consider. The
+second-to-last nut either fits our bolt, in which case we terminate our
+algorithm, or it doesn't fit, in which case the only remaining nut must fit our
+bolt. Either way, we terminate at $k=n-1$, doubling the chance of terminating
+after $n-1$ comparisons.
+
+You can think of the order of nuts to be drawn from the pile as a permutation,
+since we do not replace the nuts once we've tested them. The odds of the single
+nut we're trying to match being in any given position in the order is $1/n$.
+
+Next, we plug our probability into our definition of expecation, separating the
+last two terms from the sum at first, then simplifying:
+
+$$
+\begin{align*}
+E\[T(n)\] & = \sum_{k=1}^{n-2} \frac{k}{n} + \frac{2(n-1)}{n} \\
+& = \sum_{k=1}^n \frac{k}{n} - \frac{1}{n} \\
+& = \frac{n+1}{2} - \frac{1}{n}
+\end{align*}
+$$
+
+Alternative solution: We can think about the problem recursively. We always must
+perform one test. With probability $1/n$, we find the matching nut and halt.
+Otherwise, we recursively solve the problem with one fewer nut, giving the
+recurrence
+
+$$
+E\[T(n)\] = 1 + \frac{n-1}{n} E\[T(n-1)\]
+$$
+
+with the base case $T(1) = 0$.
+
+We can be clever and substitute a simpler function, using $t(n) = n E\[T(n)\]$:
+
+$$
+t(n) = n + t(n-1)
+$$
+
+and we see that this new recurrence is simply the sum of integers from 2 to $n$.
+
+$$
+\begin{align*}
+t(n) & = \sum_{k=2}^n k = \frac{n(n+1)}{2} - 1 \\
+\to E\[T(n)\] & = \frac{t(n)}{n} = \frac{n+1}{2} - \frac{1}{n}
+\end{align*}
+$$
