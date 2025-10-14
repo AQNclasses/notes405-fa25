@@ -64,9 +64,9 @@ comparisons.
 
 How would we write down the probability of exactly $k$ comparisons?
 
-\begin{equation}
+$$
 Pr[T(n) = k] = \begin{cases}
 1/n & \text{if k < n-1} \\
 2/n & \text{if k=n-1}
 \end{cases}
-\end{equation}
+$$
