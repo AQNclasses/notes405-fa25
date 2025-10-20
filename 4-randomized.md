@@ -117,3 +117,88 @@ t(n) & = \sum_{k=2}^n k = \frac{n(n+1)}{2} - 1 \\
 \to E\[T(n)\] & = \frac{t(n)}{n} = \frac{n+1}{2} - \frac{1}{n}
 \end{align*}
 $$
+
+## Worksheet
+
+See randomized worksheet.
+
+## Random Permutations
+
+What is a permutation?
+
+How many permutations of the set ${1,\ldots,n}$?
+
+Too many to enumerate. Can't use our coin-flipping trick we used for random
+subsets.
+
+Consider putting $n$ numbers into a hat, then drawing randomly one at a time.
+The result would be a random permutation. In olden times, this was known as "lot
+casting".
+
+We could implement this as:
+
+```
+FisherYates(n):
+  for i = 1 to n
+    Chosen[i] = false
+
+  for i=n down to 1
+    r = Random(1,n)
+    while not Chosen[r]
+      r = Random(1,n)
+    R[i] = r
+    Chosen[r] = true
+
+  return R
+```
+
+This is the *coupon collector's problem*. We are collecting "coupons" at random,
+and would like to collect all *n*. Each one arrives with probability $1/n$.
+
+Assume we've seen $i-1$ unique coupons. The next coupon is new with probability
+$p=\frac{n-i+1}{n}$. We keep "drawing" until we see something new. What is the
+expected time for this? $1/p = \frac{n}{n-i+1}$. (How to prove?)
+
+$$
+T(n) = \sum T_i(n)
+$$
+
+$$
+E[T(n)] = \sum E[T_i(n)] = \sum{\frac{n}{n-i+1}} = \sum{\frac{n}{j}} = n H_n
+$$
+
+where $H_n$ is the $nth$ harmonic number, and $H_n = \Theta(\log n)$.
+
+Here is a better algorithm:
+
+```
+SelectionShuffle(A[1:n]):
+  for i=n down to 1:
+    swap A[i] with A[Random(1,i)]
+```
+
+Correctness? Show that this implements lot-casting.
+
+Runtime? Whee!
+
+## Tail Inequalities
+
+In addition to analyzing performance of randomized algorithms, usually expected
+runtime. We can ask related questions that take into account the randomization
+of the algorithm. For example, with coupon collector's problem, how many times
+do we need to collect a coupon to guarantee with 99% certainty that we will get
+all the coupons?
+
+**Markov's Inequality:**
+
+**Proof:**
+
+## Streaming Algorithms
+
+Problem definition:
+
+- data arrives from a source in a sequence $S$.
+- data is read once, in order.
+- there is too much data to store it all locally.
+
+
