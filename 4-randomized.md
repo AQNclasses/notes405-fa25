@@ -169,17 +169,22 @@ $$
 
 where $H_n$ is the $nth$ harmonic number, and $H_n = \Theta(\log n)$.
 
+So, our overall expected runtime (number of times calling `Random`) is $O(n \log
+n)$. A small-ish factor over linear time, but we can do better.
+
 Here is a better algorithm:
 
-```
+```python
 SelectionShuffle(A[1:n]):
   for i=n down to 1:
-    swap A[i] with A[Random(1,i)]
+    swap A[i] with A[Random(1,i)] # Random is inclusive of i
 ```
 
-Correctness? Show that this implements lot-casting.
+Correctness? As we swap elements to the end of the array, we build our
+permutation. Since we never re-visit elements once they've been swapped to the
+end of the array, we've simulated drawing lots.
 
-Runtime? Whee!
+Runtime? Clearly O(N).
 
 ## Tail Inequalities
 
@@ -189,9 +194,69 @@ of the algorithm. For example, with coupon collector's problem, how many times
 do we need to collect a coupon to guarantee with 99% certainty that we will get
 all the coupons?
 
-**Markov's Inequality:**
+Andrey Markov (student of Chebyshev), history:
 
-**Proof:**
+- 1908: student riots, fired/retired
+- 1912: first empirical Markov chain demonstration
+- 1917: february revolution, reinstated
+- 1922: death
+
+**Markov's Inequality:** Let $Z$ be a non-negative integer random variable. For
+any real number, $z > 0$, we have $\Pr[Z \geq z] \leq E[Z]/z.
+
+**Proof:** Plot $Pr[Z \geq z]$ as a function of z. Split into horizontal
+rectangles (since $Z$ takes only integer values). The area under the curve is
+$\sum_z \Pr[Z \geq z] = \sum_z z \dot Pr[Z=z] = E[Z]$. For any particular value
+of $z$, the rectangle with width $z$ and height $Pr[Z \geq z]$ fits entirely
+under the curve. Thus, $z \dot Pr[Z \geq z] \leq E[Z]$.
+
+We can write this inequality to emphasize the probability that any random
+variable $X$ is significantly larger than its expectation:
+
+$$
+\Pr[X \geq (1 + \epsilon) E[X]] \leq \frac{1}{1+\epsilon}
+$$
+
+## Independence and Chebyshev's Inequality
+
+Let $X$ be the sum of indicator variables, and let $\mu = E[X]$. This
+expectation is computed as the sum of the probabilities of each random variable.
+
+**Chebyshev's Inequality:** If the indicator variables $X_1, X_2,\ldots,X_n$ are
+pairwise independent, then $\Pr[(X-\mu)^2 \geq z] < \mu/z$ for all $z > 0$.
+
+Some bounds follow, such as the additive bound:
+
+$$
+\Pr[X \geq \mu + \Delta] < \frac{mu}{\Delta^2}
+$$
+
+and the multiplicative bound:
+
+$$
+\Pr[X \geq (1+\delta)\mu] < \frac{1}{\delta^2 \mu}
+$$
+
+## Example with Bounds
+
+Consider flipping $N$ perfectly fair coins. What is the probability that we get
+at least $\alpha N$ heads, for $1/2 < \alpha < 1$?
+
+Let $X_i=1 if the $i$th coin comes up heads, and $X_i=0$ otherwise. Then, $X =
+\sum_{i=1}^N X_i$ is the number of heads.
+
+### Markov's Inequality
+
+We are curious about the quantity $\Pr[X \geq \alpha N]. Markov's inequality
+deals with the expectation of $X$, which since our coins are fair, $E[X] = N/2$.
+
+
+This implies the bound $\Pr[X \geq \alpha N] \leq \frac{1}{2\alpha}$.
+
+### Chebyshev's Inequality
+
+$\Pr[X \geq \alpha N] \leq \frac{1}{(2\alpha-1)N} = O(1/(\alpha N))$
+
 
 ## Streaming Algorithms
 
