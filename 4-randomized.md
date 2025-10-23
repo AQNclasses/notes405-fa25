@@ -81,7 +81,7 @@ You can think of the order of nuts to be drawn from the pile as a permutation,
 since we do not replace the nuts once we've tested them. The odds of the single
 nut we're trying to match being in any given position in the order is $1/n$.
 
-Next, we plug our probability into our definition of expecation, separating the
+Next, we plug our probability into our definition of expectation, separating the
 last two terms from the sum at first, then simplifying:
 
 $$
@@ -188,8 +188,8 @@ Runtime? Clearly O(N).
 
 ## Tail Inequalities
 
-In addition to analyzing performance of randomized algorithms, usually expected
-runtime. We can ask related questions that take into account the randomization
+In addition to analyzing performance of randomized algorithms (usually expected
+runtime) we can ask related questions that take into account the randomization
 of the algorithm. For example, with coupon collector's problem, how many times
 do we need to collect a coupon to guarantee with 99% certainty that we will get
 all the coupons?
@@ -202,7 +202,7 @@ Andrey Markov (student of Chebyshev), history:
 - 1922: death
 
 **Markov's Inequality:** Let $Z$ be a non-negative integer random variable. For
-any real number, $z > 0$, we have $\Pr[Z \geq z] \leq E[Z]/z.
+any real number, $z > 0$, we have $\Pr[Z \geq z] \leq E[Z]/z$.
 
 **Proof:** Plot $Pr[Z \geq z]$ as a function of z. Split into horizontal
 rectangles (since $Z$ takes only integer values). The area under the curve is
@@ -242,12 +242,12 @@ $$
 Consider flipping $N$ perfectly fair coins. What is the probability that we get
 at least $\alpha N$ heads, for $1/2 < \alpha < 1$?
 
-Let $X_i=1 if the $i$th coin comes up heads, and $X_i=0$ otherwise. Then, $X =
+Let $X_i=1$ if the $i$th coin comes up heads, and $X_i=0$ otherwise. Then, $X =
 \sum_{i=1}^N X_i$ is the number of heads.
 
 ### Markov's Inequality
 
-We are curious about the quantity $\Pr[X \geq \alpha N]. Markov's inequality
+We are curious about the quantity $\Pr[X \geq \alpha N]$. Markov's inequality
 deals with the expectation of $X$, which since our coins are fair, $E[X] = N/2$.
 
 
@@ -266,4 +266,4 @@ Problem definition:
 - data is read once, in order.
 - there is too much data to store it all locally.
 
-
+### Bloom Filter
