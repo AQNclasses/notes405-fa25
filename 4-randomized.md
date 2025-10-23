@@ -30,7 +30,7 @@ Average-case running time is defined by the expected value over all inputs:
 
 
 $$
-T_{avg}(n) = E_{|X| = n} \[T(X)\] = \sum_{|X| = n} T(X) Pr(X)
+T_{avg}(n) = E_{|X| = n} \[T(X)\] = \sum_{|X| = n} T(X) \Pr(X)
 $$
 
 What is the hardest part of computing this sum?
@@ -65,7 +65,7 @@ comparisons.
 How would we write down the probability of exactly $k$ comparisons?
 
 $$
-Pr[T(n) = k] = \begin{cases}
+\Pr[T(n) = k] = \begin{cases}
 1/n & \text{if k < n-1} \\
 2/n & \text{if k=n-1}
 \end{cases}
@@ -204,11 +204,11 @@ Andrey Markov (student of Chebyshev), history:
 **Markov's Inequality:** Let $Z$ be a non-negative integer random variable. For
 any real number, $z > 0$, we have $\Pr[Z \geq z] \leq E[Z]/z$.
 
-**Proof:** Plot $Pr[Z \geq z]$ as a function of z. Split into horizontal
+**Proof:** Plot $\Pr[Z \geq z]$ as a function of z. Split into horizontal
 rectangles (since $Z$ takes only integer values). The area under the curve is
-$\sum_z \Pr[Z \geq z] = \sum_z z \dot Pr[Z=z] = E[Z]$. For any particular value
+$\sum_z \Pr[Z \geq z] = \sum_z z \cdot \Pr[Z=z] = E[Z]$. For any particular value
 of $z$, the rectangle with width $z$ and height $Pr[Z \geq z]$ fits entirely
-under the curve. Thus, $z \dot Pr[Z \geq z] \leq E[Z]$.
+under the curve. Thus, $z \cdot \Pr[Z \geq z] \leq E[Z]$.
 
 We can write this inequality to emphasize the probability that any random
 variable $X$ is significantly larger than its expectation:
