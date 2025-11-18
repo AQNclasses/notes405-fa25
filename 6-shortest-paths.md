@@ -44,6 +44,8 @@ Relax(u,v):
 One line description: repeatedly relax tense edges, until there are no more
 tense edges.
 
+Specifically, we relax one edge at a time.
+
 ## Variations
 
 ### Breadth-first search
@@ -68,4 +70,28 @@ topological order. Again, O(V+E) time.
 Replace queue from BFS with priority queue, tackling minimum distance nodes
 first.
 
-Runtime: O(E log V)
+Runtime: O(E log V) IF all edges are positive.
+
+If we have negative edges, worst-case runtime is exponential (see book for
+further discussion).
+
+### Bellman-Ford
+
+```
+BellmanFord(s):
+  InitSSSP(s)
+  while there is at least one tense edge
+    for every edge (u,v)
+      if (u,v) is tense
+        RELAX(u,v)
+```
+
+differs from regular "Ford" algorithm because we relax all tense edges before
+re-evaluating graph and looking for next set of tense edges.
+
+Overall algorithm runs in O(VE) time, regardless of negative weights.
+
+But in practice, Dijkstra's algorithm is often faster, even with negative edges.
+
+Proving correctness and runtime? See Lemma 8.6 in book.
+
