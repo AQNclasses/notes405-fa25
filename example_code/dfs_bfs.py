@@ -8,6 +8,15 @@ def bfs(graph, start_node):
     visited.add(start_node)
     traversal_order = []
 
+    while queue:
+        v = queue.popleft()
+        visited.add(v)
+        traversal_order.append(v)
+        neighbors = graph[v]
+        for n in neighbors:
+            if n not in visited:
+                queue.append(n)
+
     # TODO: finish BFS
 
     return traversal_order

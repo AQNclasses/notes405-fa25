@@ -61,3 +61,11 @@ earlier, to do "best first search"?
 - If graph is undirected, and edges are weighted, best first search will find the minimum-weight spanning tree.
 - If weight is interpreted as the length of an edge, we can find shortest paths.
 - If weight is interpreted as a *width*, we can find "widest paths".
+
+### Topological Search
+
+Recall from trees: topological sort always gives us parents before children
+
+How to extend this to directed graphs?
+
+[See video on topological search](https://www.youtube.com/watch?v=cIBFEhD77b4)
